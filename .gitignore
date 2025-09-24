@@ -1,0 +1,51 @@
+# macOS
+.DS_Store
+
+# Node.js / Next.js
+node_modules/
+**/node_modules/
+.next/
+.next-static/
+.turbo/
+.vercel/
+.vscode/*
+!.vscode/extensions.json
+coverage/
+*.log
+*.tsbuildinfo
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.pythonenv
+.envrc
+venv/
+.env/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pytype/
+.coverage
+
+# Build artifacts
+build/
+dist/
+
+# SQLite databases
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# IDEs
+.idea/
+.fleet/
