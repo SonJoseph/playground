@@ -152,13 +152,17 @@ CREATE TABLE idempotency_keys (
 
 Example usage of idempotency keys and status/response fields:
 
-Client A sends payment with key "abc123"
+Client sends payment with key "abc123"
 1. Middleware inserts key with status="in_progress"
 2. Processes payment transaction
 3. Updates key status="success", stores response
-4. Returns response to client A
-
-Client B retries with same key "abc123"
-1. Middleware sees status="in_progress"
-2. Waits until status is "success"
-3. Returns stored response to client B
+4. Server crashes and no response is returned to the client
+5. Client automatically retries the request.
+6a. Middleware sees status="in_progress"
+    - Waits until status is "success"
+    - Returns stored response to client
+6b. Middleware sees status="success"
+    - Returns stored response to client
+6c. Middleware sees status="failure"
+    - Retries request.
+    - Waits for response.
